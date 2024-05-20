@@ -57,6 +57,7 @@ nav {
     display: flex;
     align-items: center;
     column-gap: 40px;
+    transition: 0.4s ease-in-out;
 }
 .nav-logo {
     color: #fff;
@@ -76,11 +77,12 @@ nav {
     }
     .nav-list {
         position: absolute;
-        top: var(--nav-height);
+        top: calc(var(--nav-height) - 144px);    /* calc(수치 연산자 수치); */
         right: 0;
         left: 0;
         flex-direction: column; /* flex 방향 세로로 */
         background-color: hsla(200, 100%, 25%, 0.6);
+        z-index: -1;  /* -1만큼 뒤로 보내기*/
         
     }
     .nav-item {
@@ -95,5 +97,9 @@ nav {
     }
     .nav-toggle {
         display: block; /* 햄버거 메뉴 보이기 */
+    }
+    
+    .show-menu {
+        top: var(--nav-height);
     }
 }
