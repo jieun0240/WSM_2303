@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+/* css Varibles */
+:root {
+    /* color */
+    --primay-color: hsl(160, 100%, 25%); /*H는 컬러, S는 채도, L는 밝기 */
+    --secondary-color: hsl(339, 77%, 59%);
+    --third-color: hsl(160, 100%, 30%);
+    --body-color: #fff;
+
+    /* font */
+    --body-font: "Cute Font", sans-serif;
+    --h1-font-size: 2rem;   /* 크롬 > 설정 > 글자 크기 : 중간(기본 값)일 때, 대문자 M의 너비(16px)=1rem */
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --nomal-font-size: 1rem;
+    --small-font-size: 0.8rem;
+    --smaller-font-size: 0.6rem;
+
+    /* font weight */
+    --font-thin: 200;
+    --font-regular: 400;
+    --font-bold: 700;
+
+    /* z-index */
+    --z-index: 100;
+
+    /* nav */
+    --nav-height: 44px;
+}
+
+/* nav */
+body {
+    border-block-color: var(--body-color);
+    font-family: var(--body-font);
+}
+
+body>header {
+    position: fixed;    /* 스크롤 해도 기존의 위치 고정 */
+    top: 0;
+    right: 0;
+    left: 0;
+}
+nav {
+    height: var(--nav-height);
+    background-color: var(--primay-color);
+}
+.nav.container {
+    display: flex;  /* 기본값: 가로로 배치 */
+    justify-content: space-between; /* 메인축으로 양쪽정렬 */
+    align-items: center;    /* 교차축으로 가운데 정렬 */
+    padding: 0 40px;
+    color: #fff;
+    font-size: var(--h2-font-size);
+}
+.nav-list {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    transition: 0.4s ease-in-out;
+}
+.nav-logo {
+    color: #fff;
+}
+.nav-link {
+    color: #fff;
+}
+.nav-toggle {
+    display: none;
+}
+
+
+/* mobile */
+@media screen and (max-width: 600px) {
+    .nav.container {
+        padding: 0 20px;    /* 좌우 여백 줄이기 */
+    }
+    .nav-list {
+        position: absolute;
+        top: calc(var(--nav-height) - 144px);    /* calc(수치 연산자 수치); */
+        right: 0;
+        left: 0;
+        flex-direction: column; /* flex 방향 세로로 */
+        background-color: hsla(200, 100%, 25%, 0.6);
+        z-index: -1;  /* -1만큼 뒤로 보내기*/
+        backdrop-filter: blur(8px);   /* 뒷 배경 뿌옇게 만들기 챌린지 */
+    }
+    .nav-item {
+        padding: 0.5rem 1rem;   /* 위 아래가 0.5, 왼 오른이 1*/
+        border-bottom: 2px solid white; /* 링크의 밑줄 */
+        text-align: center;
+        width: 100%;    /* 메뉴 아이템 너비를 넓히는 */
+
+    }
+    .nav-link {
+        display: block; /* 넓어지니 메뉴 아이템 너비 다 차지하는 */
+    }
+    .nav-toggle {
+        display: block; /* 햄버거 메뉴 보이기 */
+    }
+    
+    .show-menu {
+        top: var(--nav-height);
+    }
+}
