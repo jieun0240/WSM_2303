@@ -17,7 +17,7 @@ function toggleMenu() {
     const navListUl = document.getElementsByClassName("nav-list")[0];
     const toggleI = navToggleDiv.getElementsByTagName("i")[0];
 
-    navToggleDiv.onclick = (event) => {
+    navToggleDiv.onclick = (event) => {     //이벤트 함수 만들기 --> onclick은 클릭을 했을 때 실행
         navListUl.classList.toggle("show-menu");
 
         toggleI.classList.toggle("bi-list");
@@ -28,7 +28,7 @@ function toggleMenu() {
         // toggleI.classList.add("di-x-lg");
     }
 }
-toggleMenu();
+toggleMenu();   //함수 호출
 
 
 // function 함수명(파라1, 파라2) {
