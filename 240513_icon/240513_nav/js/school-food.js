@@ -36,7 +36,67 @@ const getSchoolFoodMenu = (dateData) => {
     //error 있다면 catch 함수 호출되고, 에러 출력
     fetch(url)
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => setSchoolFoodMenu(data))
     .catch((error) => console.error.error(error));
 }
 //받아온 급식 정보 표시 
+const setSchoolFoodMenu = (data) => {
+    //breakfastMenuUl 가져오기 HTML -> js
+    //lunchMenuUl 가져오기
+    //dinnerMenuUl 가져오기
+    const breakfastMenuUl = document.getElementsByClassName("menu breakfast")[0];
+    const lunchfastMenuUl = document.getElementsByClassName("menu lunch")[0];
+    const dinnerMenuUl = document.getElementsByClassName("menu dinner")[0];
+   
+    //data 메뉴 가져오기
+    const menuData = data["mealServiceDietInfo"][1]["row"];
+
+    //필요없는 요소 지우기
+    menuData.forEach((menuRow) => {
+        //(...) 없애기 
+        let clenedMenu = menuRow.DDISH_NM;
+        clenedMenu = clenedMenu.replace(/\([^\)]*\)/g, "");  //소괄호 연문자로 시작~소괄호 닫는문자를 제외한 문자들 0~n개, 소괄호 닫는문자
+        //'.' 없애기 
+        clenedMenu = clenedMenu.replace(/\./g, ""); //(점) 문자 찾아서 "" 대체
+        
+        
+        // <br>태그로 나누기
+        //빈칸 없애기
+        //<li class="menu-food"> 가져온 메뉴 음식 하나씩 </li>
+    });
+        
+
+    //조식의 경우, breakfastMenuUl에 넣기
+    //중식의 경우, lunchMenuUl에 넣기
+    //석식의 경우, dinnerMenuUl에 넣기 js -> HTML
+
+
+
+
+
+
+
+    // console.log("setSchoolFoodMenu", data);
+    // console.log(data["mealServiceDietInfo"][1]["row"][1]["DDISH_NM"]);
+
+    // console.log(setSchoolFoodMenu);
+    // console.log(setSchoolFoodMenu[""]);
+    // const TEMP_JSON = {
+    //     'name': '변우석',
+    //     'height': '189cm',
+    //     'filmography': ['선없튀', '청춘기록'],
+    // };
+    // console.log(TEMP_JSON.name);
+    // console.log(TEMP_JSON["name"]);
+
+    // console.log(TEMP_JSON.height);
+    // console.log(TEMP_JSON["height"]);
+
+    // console.log(TEMP_JSON.filmography);
+    // console.log(TEMP_JSON["filmography"]);
+
+    // console.log(TEMP_JSON.filmography[0]);
+    // console.log(TEMP_JSON["filmography"][0]);
+}
+
+changeDate(0);

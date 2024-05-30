@@ -69,7 +69,6 @@ nav {
     display: none;
 }
 
-
 /* mobile */
 @media screen and (max-width: 600px) {
     .nav.container {
@@ -98,7 +97,6 @@ nav {
     .nav-toggle {
         display: block; /* 햄버거 메뉴 보이기 */
     }
-    
     .show-menu {
         top: var(--nav-height);
     }
