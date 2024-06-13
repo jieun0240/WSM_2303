@@ -41,6 +41,7 @@ body>header {
     right: 0;
     left: 0;
     padding: none;
+    z-index: 10;    /* 네브바에 가려진 매점 아이템 보이게 하기 */
 }
 nav {
     height: var(--nav-height);
