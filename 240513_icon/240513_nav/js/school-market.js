@@ -12,8 +12,8 @@ const showData = (data) => {
         productContainerString += articleString;
     });
     //.product-container 추가
-    const productContainerDiv = document.getElementsByClassName("product-container")[0];
-    productContainerDiv.innerHTML = productContainerString;
+    const productContainerDiv = document.getElementsByClassName("product-container")[0];    // 0번째 방부터 꺼내야함 걍 주입하셈.
+    productContainerDiv.innerHTML = productContainerString;     //html로 덮어쓰겠다는 거지..
 }
 const setData = (data) => {
     allData = data;     //처음 한번 Data 보관

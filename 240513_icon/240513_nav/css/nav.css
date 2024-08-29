@@ -57,8 +57,8 @@ nav {
 }
 .nav-list {
     display: flex;
-    align-items: center;
-    column-gap: 40px;
+    align-items: center;    /* 위 아래로 센타 */
+    column-gap: 40px;   /* list 사이의 간격을 40px씩 줌 */
     transition: 0.4s ease-in-out;
 }
 .nav-logo {
