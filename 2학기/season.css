@@ -1,0 +1,28 @@
+.container {
+    width: 800px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 30% 70%; /* 1fr 1fr,, repeat(2, 1fr); */
+    grid-template-rows: 40% 60%;
+}
+.item {
+    /* border: 1px solid gray; */
+    /* 글자 가운데 정렬 : grid */
+    display: grid;
+    place-items: center;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.item:first-child {
+    background-color: lightcyan;
+}
+.item:nth-child(2) {
+    background-color: tomato;
+}
+.item:nth-child(3) {
+    background-color: khaki;
+}
+.item:last-child {
+    background-color: honeydew;
+}
