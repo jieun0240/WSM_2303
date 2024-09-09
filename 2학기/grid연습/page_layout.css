@@ -14,12 +14,12 @@ html {
 .container {
     height: 100%;
     display: grid;
-    grid-template-columns: 200px 1fr 100px;
-    grid-template-rows: 44px 1fr 100px;
+    grid-template-columns: 200px 1fr 100px; /* 좌측 사이드, 메인, 우측 사이드의 열 크기 설정 */
+    grid-template-rows: 44px 1fr 100px; /* 헤더, 메인 컨텐츠, 푸터의 행 크기 설정 */
     grid-template-areas: 
-    "header     header  header"
-    "side-left  main    side-right"
-    "footer     footer  footer";
+    "header     header  header"  /* 첫 번째 행: 헤더 영역 */
+    "side-left  main    side-right" /* 두 번째 행: 좌측 사이드, 메인, 우측 사이드 영역 */
+    "footer     footer  footer"; /* 세 번째 행: 푸터 영역 */
 }
 
 figure img {
