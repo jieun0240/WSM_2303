@@ -33,15 +33,34 @@
             </div>
         </nav>
     </header>   
+    
+    <main id="dormitory">
+        <h1>세탁기 예약하기</h1>
 
-    <main id="calendar">
-        <div id="calendar-header">
-            <button id="prev-month">이전</button>
-            <h1></h1>
-            <button id="next-month">다음</button>
+        <div id="selection-container">
+            <div class="selection-item">요일 지정</div>
+            <div class="selection-item">시간 선택</div>
+            <div class="selection-item">호실 이름</div>
         </div>
-        <div id="calendar-container">
-            
+
+        <div id="calendar">
+            <!-- 요일 지정 -->
+            <div id="calendar-header">
+                <button id="prev-month">이전</button>
+                <h1></h1>
+                <button id="next-month">다음</button>
+            </div>
+
+            <!-- 달력 => js으로 가져올거임 -->
+            <div id="calendar-container"></div>
+        </div>
+
+        <div id="selection-washingmachine-time">
+            <!-- 시간선택 -->
+        </div>
+
+        <div id="selection-ro0m-name">
+            <!-- 호실 이름 -->
         </div>
     </main>
     
