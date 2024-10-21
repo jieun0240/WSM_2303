@@ -59,7 +59,7 @@
             <!-- 시간선택 -->
              <div class="flex-container">
                 <div class="selection-washingmachine">
-                    <select name="" id="washingmachine">
+                    <select name="washingmachine" id="washingmachine">
                         <option value="1">1번 세탁기</option>
                         <option value="2">2번 세탁기</option>
                         <option value="3">3번 세탁기</option>
@@ -76,11 +76,34 @@
              <button class="btn">다음</button>
         </div>
 
-        <div id="selection-ro0m-name">
+        <div id="selection-room-name">
             <!-- 호실 이름 -->
+            <div class="flex-container">
+                <div class="selection-room">
+                    <select name="room" id="room">
+                        <option value="401">401호</option>
+                        <option value="402">402호</option>
+                        <option value="403">403호</option>
+                        <option value="404">404호</option>
+                        <option value="405">405호</option>
+
+                        <option value="501">501호</option>
+                        <option value="502">502호</option>
+                        <option value="503">503호</option>
+                        <option value="504">504호</option>
+                        <option value="505">505호</option>
+                    </select>
+                </div>
+                <div class="input-name">
+                    <input type="text" id="name" name="name" placeholder="이름을 입력하시오.">
+                </div>
+             </div>
+             <button class="btn">다음</button>
         </div>
+
+        
     </main>
-    
+
     <script src="js/nav.js"></script>
     <script src="js/dormitory.js"></script>
 </body>
