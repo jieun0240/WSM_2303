@@ -110,7 +110,8 @@ main {
 
 #selection-washingmachine-time,
 #selection-room-name,
-#calendar {
+#calendar,
+#board {
     display: none;
 }
 
@@ -118,9 +119,11 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
 }
+
 #board .header {
     background-color: bisque;
 }
+
 #board .item {
     color: black;
     border: 1px solid gray;
