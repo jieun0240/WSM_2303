@@ -41,10 +41,8 @@ const initData = async () => {
 
     // allData 호출 (구현 내용은 비어 있음)
     const allData = await getAllData("js/allData.json"); // 비어있는 함수 호출
-    console.log(allData);
     // weeklyReservation 호출
-    const weeklyReservation = await getWeeklyReservation("js/weekly-reservation.json");
-    console.log(weeklyReservation); // 주간 예약 데이터 출력
+    const weeklyReservations = await getWeeklyReservation("js/weekly-reservation.json");
 }
 
 const setPage = (page) => {
