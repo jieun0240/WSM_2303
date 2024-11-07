@@ -65,5 +65,21 @@ const setPage = (page) => {
     pageDivs[page - 1].style.display = "block";
 }
 
+const clickDate = (event) => {
+    console.log(event);
+    console.log(event.target.textContent);
+    console.log(event.target.dataset.date); //div에 클래스에 아이템에 아이디 뭐시기...텍스트 뭐시기 뽑음.
+    newResvation = {
+        "date": undefined,
+        "washingmachine": undefined,
+        "time": undefined,
+        "room": undefined,
+        "name": undefined,
+        "notification": undefined,
+    }
+    newResvation.date = event.target.dataset.date;  //클릭한 날짜 정보 새 예약에 기록하기
+    setPage(2);
+}
+
 initData();
 setPage(1);
