@@ -6,6 +6,9 @@ const boarDiv = document.querySelector("#board");
 
 const pageDivs = [calendarDiv, selectionWashingmachineTimeDiv, selectionRoomNameDiv, boarDiv];
 
+const washingmachineSelect = document.getElementById("washingmachine");
+const timeSelect = document.getElementById("time");
+
 // 셀렉션 세개
 const selectionItemDivs = document.getElementsByClassName("selection-item");
 
@@ -23,9 +26,9 @@ const initData = async () => {
     // allData 가져오기
     const getAllData = async (url) => {
         return fetch(url)
-        .then(response => response.json())
-        .then((data => {return data}))
-        .catch(error => console.error(error.message));
+            .then(response => response.json())
+            .then((data => { return data }))
+            .catch(error => console.error(error.message));
     }
 
     // weeklyReservation 가져오기
@@ -63,6 +66,29 @@ const setPage = (page) => {
 
     // show pagas
     pageDivs[page - 1].style.display = "block";
+
+    if (page === 2) {    //세탁기 ,, 시간
+        // 1,2,3 세탁기 / 1,2,3 시간 초기화
+        let allWashingmachineTime = {"1": ["1", "2", "3"], "2": ["1", "2", "3"], "3": ["1", "2", "3"]};
+        // 클릭한 날짜의 요일 구하기
+        // 예약된 시간을 확인하고, 세탁기가 있으면 초기화에서 제외
+        // 사용자가 예약한 예약을 보고 예약된 세탁기, 시간이 있으면 초기화 항목에서 제외
+        // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기 제외
+        // 세탁기 select에 option 만들기
+        let washingmachines = Object.keys(allWashingmachineTime);   //key만 가져옴
+        washingmachines.forEach(washingmachine => {
+            let newOption = document.createElement("option");   //<option></>
+            newOption.value = washingmachine;   //<option value="세탁기번호"></>
+            newOption.textContent = `${washingmachine}번 세탁기`;    //<option value="세탁기번호">세탁기번호 세탁기</>
+            washingmachineSelect.appendChild(newOption);    //washingmachineSelect에 자식으로 넣자
+        });
+        // 시간 select에 option 만들기
+        // [다음] 클릭 => 세탁기 번호, 시간 번호 보관 => setPage(3)
+    } else if (page === 3) {    //호실, 이름
+
+    } else if (page === 4) {    //세탁기 예약 현황표
+
+    }
 }
 
 const clickDate = (event) => {
