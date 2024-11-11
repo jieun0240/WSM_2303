@@ -73,7 +73,7 @@ const setCalendar = (date) => {
     // 최종 문자열을 calendarContainerDiv에 삽입
     calendarContainerDiv.innerHTML = weekNameString;
 
-    
+
 
     // 이전 달의 뒷 날짜 표시하자
     for (let date = prevMonthLastDateDate - firstDay + 1; date <= prevMonthLastDateDate; date++) {
@@ -87,7 +87,7 @@ const setCalendar = (date) => {
     for (let date = 1; date <= lastDateDate; date++) {
         let currentMonthDateDiv = document.createElement("div");     // <div></div>
         currentMonthDateDiv.className = "item";    // <div class="item"></div>
-        currentMonthDateDiv.dataset.date = `${year}-${month+1}-${date}`;    // <div class="item" data-date="년-월-일"></div>
+        currentMonthDateDiv.dataset.date = `${year}-${month + 1}-${date}`;    // <div class="item" data-date="년-월-일"></div>
         currentMonthDateDiv.onclick = (event) => clickDate(event);    // <div class="item" data-date="년-월-일" onclick(event) => clickDate(event)></div>
         currentMonthDateDiv.textContent = date;    // <div class="item">날짜</div>
         calendarContainerDiv.appendChild(currentMonthDateDiv);    // <div id="calendar-continer"><div class="item">날짜</div></div>
@@ -107,8 +107,8 @@ const setCalendar = (date) => {
 changeMonth(0); // 현재 달 출력
 setCalendar(currentDate);   // 현재 달의 달력 보여주기
 
-const btns = document.getElementsByClassName("btn");
-for (let btn of btns) {
-    // 버튼 누르면 예약완료 창 뜨도록 도와주는 js
-    btn.onclick = () => alert('예약 완료');
-}
+// const btns = document.getElementsByClassName("btn");
+// for (let btn of btns) {
+//     // 버튼 누르면 예약완료 창 뜨도록 도와주는 js
+//     btn.onclick = () => alert('예약 완료');
+// }
