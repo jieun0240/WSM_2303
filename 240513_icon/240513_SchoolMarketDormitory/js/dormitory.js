@@ -8,6 +8,8 @@ const selectionRoomNameDiv = document.querySelector("#selection-room-name");
 const boardDiv = document.querySelector("#board");
 const washingmachineSelect = document.getElementById("washingmachine");
 const timeSelect = document.querySelector("#time");
+const roomSelect = document.getElementById("room");
+const nameInput = document.querySelector("#name");
 
 // calendarDiv.style.display = "block";
 // selectionWashingmachineTimeDiv.style.display="block";
@@ -69,7 +71,10 @@ const setPage = (page) => {
     if (page === 2) {    //세탁기, 시간
         initWashingmachineTime();
     } else if (page === 3) { // 호실, 이름
+        newReservation.washingmachine = washingmachineSelect.value;
+        newReservation.time = timeSelect.value;
 
+        initRoomName();
     } else if (page === 4) {  //세탁기 예약 현황표
 
     }
@@ -147,4 +152,32 @@ const initWashingmachineTime = () => {
 
     // [다음] 클릭 => 세탁기 번호, 시간 번호를 보관하자 => setPage(3)
 
+}
+
+const initRoomName = () => {
+    // 모든 호실 표시하기
+    let rooms = allData.room;
+
+    // 1번 방법
+    // rooms.forEach((room) => {
+    //     let newOption = document.createElement("option");
+    //     newOption.value = room;
+    //     newOption.textContent = `${room}호`;
+    //     roomSelect.appendChild(newOption);
+    // });
+
+    // 2번 방법
+    // let roomString = "";
+    // rooms.forEach((room) => {
+    //     roomString += `<option value="${room}">${room}호</option>`
+    // });
+    // roomSelect.innerHTML = roomString;
+
+    // 3번 방법
+    roomSelect.innerHTML = rooms.map((room) => `<option value="${room}">${room}호</option>`)
+
+    // 이름 초기화
+    nameInput.value = "";
+    
+    // [다음] 클릭 => 호실, 이름 보관하기 => setPage(4)
 }
