@@ -1,6 +1,8 @@
 main {
-    margin: 0 auto; /* 1. 가운데로 먼저 맞추고, */
-    margin-top: calc(var(--nav-height) + 40px);    /* 2. 위에서 띄우자 */
+    margin: 0 auto;
+    /* 1. 가운데로 먼저 맞추고, */
+    margin-top: calc(var(--nav-height) + 40px);
+    /* 2. 위에서 띄우자 */
     /* font-size: var(--h2-font-size); */
 }
 
@@ -8,17 +10,19 @@ main {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    width: min(100%, 600px);    /* 브라우저 너비가 600px 초과면, 600px, 미만이면 작게....아니 그냥 width: 100%; max-width: 600px; 합친거임. */
+    width: min(100%, 600px);
+    /* 브라우저 너비가 600px 초과면, 600px, 미만이면 작게....아니 그냥 width: 100%; max-width: 600px; 합친거임. */
 }
 
-#dormitory > h1 {
+#dormitory>h1 {
     font-size: var(--h1-font-size);
     text-align: center;
     margin-bottom: 40px;
 }
 
 #dormitory #selection-container {
-    margin: 0 auto; /* 수평 가운데로 */
+    margin: 0 auto;
+    /* 수평 가운데로 */
     margin-bottom: 80px;
     font-size: var(--h2-font-size);
     width: 330px;
@@ -82,7 +86,8 @@ main {
 }
 
 .other-month {
-    color: #ddd !important; /* 우선순위를 역전 시킴 */
+    color: #ddd !important;
+    /* 우선순위를 역전 시킴 */
 }
 
 
