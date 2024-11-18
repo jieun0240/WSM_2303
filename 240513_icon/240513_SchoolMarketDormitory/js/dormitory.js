@@ -118,9 +118,9 @@ const initWashingmachineTime = () => {
     });
     // 사용자가 예약한 예야을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기회 항목에서 빼자
     // 초기화 항목에서 예약된 시간 뺀 후 모든 시간이 없는 세탁기는 빼자
+    let washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);
     //세탁기 select에 option 만들어 넣자
     washingmachineSelect.innerHTML = "";
-    let washingmachines = Object.keys(allWashingmachineTime); //["1","2","3"]
     washingmachines.forEach((washingmachine) => {
         let newOption = document.createElement("option"); //<option></option>
         newOption.value = washingmachine; //<option value = "세탁기 번호"></option>
