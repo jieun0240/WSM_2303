@@ -104,6 +104,18 @@ const initWashingmachineTime = () => {
     // 클릭한 날짜의 요일 구하자
     let weekday = newReservation.date.getDay();
     // 미리 예약된 예약을 보고 예약된 세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
+    weeklyReservations.forEach((weeklyReservation) => {
+        if (weekday === weeklyReservation.weekday) {
+            //이미 예약된 시간은 빼기
+            // const washingmachine = weeklyReservation.washingmachine;
+            // const time = weeklyReservation.time;
+            const { washingmachine, time } = weeklyReservation; // 위에 두 줄이랑 똑같음
+            const index = allWashingmachineTime[washingmachine].indexOf(String(time));
+            if (index > -1) {
+                allWashingmachineTime[washingmachine].splice(index, 1);
+            }
+        }
+    });
     // 사용자가 예약한 예야을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기회 항목에서 빼자
     // 초기화 항목에서 예약된 시간 뺀 후 모든 시간이 없는 세탁기는 빼자
     //세탁기 select에 option 만들어 넣자
