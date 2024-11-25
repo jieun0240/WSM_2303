@@ -146,6 +146,18 @@ const initWashingmachineTime = () => {
     });
     console.log(allWashingmachineTime);
     // 사용자가 예약한 예약을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
+    reservations.forEach((reservation) => {
+        if (newReservation.date && 
+            newReservation.date.getFullYear() == reservation.date.getFullYear() &&
+            newReservation.date.getMonth() == reservation.date.getMonth() &&
+            newReservation.date.getDate() == reservation.date.getDate()) {
+            const times = allWashingmachineTime[reservation.washingmachine] || [];
+            const index = times.indexOf(String(reservation.time));
+            if (index > -1) {
+                times.splice(index, 1);
+            }
+        }
+    });
     // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기는 빼자
     let washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);     //"1","2","3"
 
