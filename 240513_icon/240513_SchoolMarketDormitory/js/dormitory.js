@@ -70,20 +70,28 @@ const setPage = (page) => {
     // show page
     pageDivs[page - 1].style.display = "block";       // 1페이지: calendar, 2페이지: swt, 3페이지: srn, 4페이지: board
 
-    if(page === 1){
-        //원래는 백엔드에 reservations 넘겨서 저장하자
-        //백엔드 안배웠으니까 LocalStorage에 저장하자
+    if (page === 1) {
+        // 원래는 백엔드에 reservations 넘겨서 저장하자
+        // 백엔드 안배웠으니까 LocalStorage에 저장하자
+        let storedReservations = localStorage.getItem("reservations");
+        if (storedReservations) {   // 저장된 데이터가 있으면
+            reservations = JSON.parse(storedReservations);
+            reservations.map((reservation) => reservation.date = new Date(reservation.date));
+            // revations에서 하나 꺼내서 .date에 있는 string -> Date 객체로 바꾸고 다시 .date에 넣기
+        } else {    // 없으면
+            reservations = [];
+        }
     } else if (page === 2) {     // 세탁기, 시간
         initWashingmachineTime();
     } else if (page === 3) {      // 호실, 이름
-        //세탁기, 시간 번호 기록하자
+        // 세탁기, 시간 번호 기록하자
         newReservation.washingmachine = washingmachineSelect.value;
         newReservation.time = timeSelect.value;
 
         initRoomName();
 
     } else if (page === 4) {      // 세탁기 예약 현황표
-        //호실, 이름 기록하자
+        // 호실, 이름 기록하자
         newReservation.room = roomSelect.value;
         newReservation.name = nameInput.value;
         reservations.push(newReservation);      // 새로 입력한 예약을 reservations로 모아놓자
@@ -121,25 +129,25 @@ const initWashingmachineTime = () => {
         allWashingmachineTime[washingmachine] = Object.keys(allData.time);        // {"1":["1","2","3"]}
     });
     // 클릭한 날짜의 요일 구하자
-    let weekday =  newReservation.date.getDay();
+    let weekday = newReservation.date.getDay();
 
     // 미리 예약된 예약을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
     weeklyReservations.forEach((weeklyReservation) => {
-        if(weekday === weeklyReservation.weekday){
+        if (weekday === weeklyReservation.weekday) {
             //초기화 한 데이터에서 weeklyReservation에 예약된 세탁기 번호의 시간 번호를 빼자
-            const {washingmachine, time} = weeklyReservation;
+            const { washingmachine, time } = weeklyReservation;
             // const washingmachine = weeklyReservation.washingmachine;
             // const time = weeklyReservation.time;
             const index = allWashingmachineTime[washingmachine].indexOf(String(time));   //원하는 시간 찾아서
-            if(index > -1){
-                allWashingmachineTime[washingmachine].splice(index,1);  // 그 시간 삭제하자
+            if (index > -1) {
+                allWashingmachineTime[washingmachine].splice(index, 1);  // 그 시간 삭제하자
             }
         }
     });
     console.log(allWashingmachineTime);
     // 사용자가 예약한 예약을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
     // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기는 빼자
-    let washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine)=> allWashingmachineTime[washingmachine].length > 0);     //"1","2","3"
+    let washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);     //"1","2","3"
 
 
     // 세탁기 select에 option 만들어 넣자
@@ -215,10 +223,10 @@ const initTable = () => {
         tableString += `
             <div class="item board-item">${reservation.name}</div>
             <div class="item board-item">${reservation["room"]}호</div>
-            <div class="item board-item">${reservation.date.getFullYear()}년 ${reservation.date.getMonth()+1}월 ${reservation.date.getDate()}일</div>
+            <div class="item board-item">${reservation.date.getFullYear()}년 ${reservation.date.getMonth() + 1}월 ${reservation.date.getDate()}일</div>
             <div class="item board-item">${allData.time[reservation.time]}</div>
             <div class="item board-item">${reservation.washingmachine}번 세탁기</div>
-            <div class="item board-item">${reservation.notification?"🔔":"❌"}</div>`;
+            <div class="item board-item">${reservation.notification ? "🔔" : "❌"}</div>`;
     });
     boardContainerDiv.innerHTML = tableString;
 }
